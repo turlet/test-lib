@@ -1,13 +1,12 @@
 package com.github.fafaldo.blurzoomgallery.widget;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.AsyncTask;
+import android.renderscript.RenderScript;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v8.renderscript.RenderScript;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -16,7 +15,6 @@ import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
 
-import com.github.fafaldo.blurzoomgallery.R;
 import com.github.fafaldo.blurzoomgallery.util.Utils;
 
 import java.lang.reflect.Field;
@@ -82,54 +80,54 @@ public class BlurZoomCoordinatorLayout extends CoordinatorLayout {
     }
 
     private void parseAttrs(AttributeSet attrs) {
-        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BlurZoomCoordinatorLayout);
+//        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BlurZoomCoordinatorLayout);
+//
+//        collapsedListHeight = a.getDimension(R.styleable.BlurZoomCoordinatorLayout_collapsedListHeight, collapsedListHeight);
+//        maxBlurRadius = a.getFloat(R.styleable.BlurZoomCoordinatorLayout_maxBlurRadius, maxBlurRadius);
+//        blurSteps = a.getInt(R.styleable.BlurZoomCoordinatorLayout_blurSteps, blurSteps);
+//        bitmapSizeDivide = a.getInt(R.styleable.BlurZoomCoordinatorLayout_bitmapSizeDivide, bitmapSizeDivide);
+//        blurEnable = a.getBoolean(R.styleable.BlurZoomCoordinatorLayout_blurEnable, blurEnable);
+//        scaleEnable = a.getBoolean(R.styleable.BlurZoomCoordinatorLayout_scaleEnable, scaleEnable);
+//        maxScale = a.getFloat(R.styleable.BlurZoomCoordinatorLayout_maxScale, maxScale);
+//        int st = a.getInt(R.styleable.BlurZoomCoordinatorLayout_android_scaleType, scaleType.ordinal());
+//        scaleType = ImageView.ScaleType.values()[st];
 
-        collapsedListHeight = a.getDimension(R.styleable.BlurZoomCoordinatorLayout_collapsedListHeight, collapsedListHeight);
-        maxBlurRadius = a.getFloat(R.styleable.BlurZoomCoordinatorLayout_maxBlurRadius, maxBlurRadius);
-        blurSteps = a.getInt(R.styleable.BlurZoomCoordinatorLayout_blurSteps, blurSteps);
-        bitmapSizeDivide = a.getInt(R.styleable.BlurZoomCoordinatorLayout_bitmapSizeDivide, bitmapSizeDivide);
-        blurEnable = a.getBoolean(R.styleable.BlurZoomCoordinatorLayout_blurEnable, blurEnable);
-        scaleEnable = a.getBoolean(R.styleable.BlurZoomCoordinatorLayout_scaleEnable, scaleEnable);
-        maxScale = a.getFloat(R.styleable.BlurZoomCoordinatorLayout_maxScale, maxScale);
-        int st = a.getInt(R.styleable.BlurZoomCoordinatorLayout_android_scaleType, scaleType.ordinal());
-        scaleType = ImageView.ScaleType.values()[st];
-
-        a.recycle();
+//        a.recycle();
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
 
-        appBarLayout = (AppBarLayout) findViewById(R.id.gallery_coordinator_appbarlayout);
-        if(appBarLayout == null) {
-            throw new IllegalStateException("No AppBarLayout found in BlurZoomCoordinatorLayout");
-        }
-
-        scrollView = findViewById(R.id.gallery_coordinator_scroll);
-        if(scrollView == null) {
-            throw new IllegalStateException("No scrolling view found in BlurZoomCoordinatorLayout");
-        }
-
-        toolbar = findViewById(R.id.gallery_coordinator_toolbar);
-        if(toolbar == null) {
-            throw new IllegalStateException("No toolbar found in BlurZoomCoordinatorLayout");
-        }
-
-        placeholder = findViewById(R.id.gallery_coordinator_placeholder);
-        if(placeholder == null) {
-            throw new IllegalStateException("No placeholder view found in scrolling view in BlurZoomCoordinatorLayout");
-        }
-
-        galleryContainerView = findViewById(R.id.gallery_coordinator_gallery_container);
-        if(galleryContainerView == null) {
-            throw new IllegalStateException("No gallery container view found in BlurZoomCoordinatorLayout");
-        }
-
-        galleryView = galleryContainerView.findViewById(R.id.gallery_coordinator_gallery);
-        if(galleryView == null) {
-            throw new IllegalStateException("No gallery view found in container in BlurZoomCoordinatorLayout");
-        }
+//        appBarLayout = (AppBarLayout) findViewById(R.id.gallery_coordinator_appbarlayout);
+//        if(appBarLayout == null) {
+//            throw new IllegalStateException("No AppBarLayout found in BlurZoomCoordinatorLayout");
+//        }
+//
+//        scrollView = findViewById(R.id.gallery_coordinator_scroll);
+//        if(scrollView == null) {
+//            throw new IllegalStateException("No scrolling view found in BlurZoomCoordinatorLayout");
+//        }
+//
+//        toolbar = findViewById(R.id.gallery_coordinator_toolbar);
+//        if(toolbar == null) {
+//            throw new IllegalStateException("No toolbar found in BlurZoomCoordinatorLayout");
+//        }
+//
+//        placeholder = findViewById(R.id.gallery_coordinator_placeholder);
+//        if(placeholder == null) {
+//            throw new IllegalStateException("No placeholder view found in scrolling view in BlurZoomCoordinatorLayout");
+//        }
+//
+//        galleryContainerView = findViewById(R.id.gallery_coordinator_gallery_container);
+//        if(galleryContainerView == null) {
+//            throw new IllegalStateException("No gallery container view found in BlurZoomCoordinatorLayout");
+//        }
+//
+//        galleryView = galleryContainerView.findViewById(R.id.gallery_coordinator_gallery);
+//        if(galleryView == null) {
+//            throw new IllegalStateException("No gallery view found in container in BlurZoomCoordinatorLayout");
+//        }
 
         prepareViews();
 
